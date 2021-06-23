@@ -1,4 +1,5 @@
 #include "main.h"
+#include <algorithm>
 #include <io.h>
 #include <direct.h>
 #include "CJsonObject.hpp"
@@ -35,41 +36,47 @@ bool checkKey(std::string name) {
     }
     return true;
 }
-bool loadFileLines(std::string path,std::vector<std::string>& data) {
-    data.clear();
+std::string delLastBlanks(std::string str) {
+    if (str.length() == 0)
+        return str;
     std::string blanks("\f\v\r\t\n ");
-    std::ifstream in(path);
-    std::string line = "";
     std::map<char, bool> c2out;
     for (size_t i = 0; i < blanks.size(); i++)
     {
         c2out.insert(std::make_pair(blanks[i], true));
     }
+    int idx = 0;
+    int len = str.length();
+    while (idx > -1) {
+        idx = -1;
+        for (int i = len - 1; i >= 0; i--) {
+            if (c2out.find(str[i]) != c2out.end()) {
+                idx = i;
+            }
+            else {
+                break;
+            }
+        }
+        if (idx > -1)
+            len = idx;
+    }
+    if (len < str.length())
+        return str.substr(0, len);
+    return str;
+}
+bool loadFileLines(std::string path,std::vector<std::string>& data) {
+    data.clear();
+    std::string blanks("\f\v\r\t\n ");
+    std::ifstream in(path);
+    std::string line = "";
+    
     if (in.is_open()) {
         while (getline(in, line))
         {
             std::string str = line;
             if(str.length() > 0)
                 str.erase(0, str.find_first_not_of(blanks));
-            if (str.length() > 0) {
-                int idx = 0;
-                int len = str.length();
-                while (idx > -1) {
-                    idx = -1;
-                    for (int i = len-1; i >= 0; i--) {
-                        if (c2out.find(str[i]) != c2out.end()) {
-                            idx = i;
-                        }
-                        else {
-                            break;
-                        }
-                    }
-                    if (idx > -1)
-                        len = idx;
-                }
-                if (len < str.length())
-                    str = str.substr(0, len);
-            }
+            str = delLastBlanks(str);
             if (str.length() > 1) {
                 std::string first = str.substr(0, 2);
                 if (first == "//" || first == "::")
@@ -103,6 +110,62 @@ int createDirectory(std::string path)
         }
     }
     return 0;
+}
+//int Type = 0;
+//std::string des = "描述:";
+//std::string curl = "";
+//std::string lua = "";
+
+bool handItem(std::map<std::string, std::string> &olditem,std::string key, int Type, std::string des, std::string curl, std::string lua) {
+    if (Type < 1 || Type > 2) {
+        std::string tip = "未知类型处理类型:";
+        tip += key;
+        if (MessageBox(NULL, tip.c_str(), "提示", MB_OK) == MB_OK) {
+            return false;
+        }
+    }
+    
+    if (Type == 1) {
+        OPENFILENAME lofe = { 0 };
+        lofe.lStructSize = sizeof(lofe);
+        lofe.hwndOwner = NULL;
+        lofe.hInstance = GetModuleHandle(NULL);
+        lofe.lpstrFilter = "All Files\0*.*\0\0";
+        lofe.lpstrCustomFilter = NULL;
+        char arr[4096] = "";
+        lofe.lpstrFile = arr;
+        lofe.nMaxFile = 4096;
+        std::string title = "选择路径:";
+        title += key;
+        lofe.lpstrTitle = title.c_str();
+        if (GetOpenFileName(&lofe) == true) {
+            olditem[key] = std::string(lofe.lpstrFile);
+            return true;
+        }
+    }
+    else if (Type == 2) {
+        BROWSEINFO browse_info;
+        browse_info.hwndOwner = 0;
+        browse_info.pidlRoot = 0;
+        browse_info.pszDisplayName = 0;
+        std::string title = "请选择文件夹";
+        title += key;
+        browse_info.lpszTitle = title.c_str();
+        browse_info.ulFlags = BIF_RETURNONLYFSDIRS | BIF_STATUSTEXT;
+        browse_info.lpfn = 0;
+        browse_info.lParam = 0;
+        browse_info.iImage = 0;
+
+        LPITEMIDLIST item_id_list = SHBrowseForFolder(&browse_info);
+        if (item_id_list != 0) {
+            char arr[4096] = "";
+            if (SHGetPathFromIDList(item_id_list, arr))
+            {
+                olditem[key] = arr;
+                return true;
+            }
+        }
+    }
 }
 int main(int argc, char* argv[]){
 	std::cout<<"TOOL_VERSION::" << VERSION_TOOL << std::endl;
@@ -138,35 +201,26 @@ int main(int argc, char* argv[]){
     while (filedatabuff.size() == 0) {
         if (inpath == "quit")
             return 0;
-        std::ifstream in(inpath);
-        if (in)
+        try
         {
-            
-            try
+            loadFileLines(inpath, filedatabuff);
+            if (filedatabuff.size() == 0)
             {
-                loadFileLines(inpath, filedatabuff);
-                if (filedatabuff.size() == 0)
-                    return 0;
-            }
-            catch (const std::exception& ex)
-            {
-                if (in.is_open())
-                    in.close();
-                std::cout << line << std::endl;
-                std::cout<<ex.what()<<std::endl;
-                if (MessageBox(NULL, TEXT("出现异常是否修改文件后重试"), TEXT("提示"), MB_YESNO) == IDNO) {
-                    filedatabuff.push_back("error");
-                }
-                else {
-                    filedatabuff.clear();
-                }
+                std::cout << "no such file:: " << inpath << std::endl;
+                std::cout << "Please input the ini file" << std::endl;
+                std::cin >> inpath;
             }
         }
-        else // 没有该文件
+        catch (const std::exception& ex)
         {
-            std::cout << "no such file:: "<<inpath << std::endl;
-            std::cout << "Please input the ini file" << std::endl;
-            std::cin >> inpath;
+            std::cout << line << std::endl;
+            std::cout<<ex.what()<<std::endl;
+            if (MessageBox(NULL, TEXT("出现异常是否修改文件后重试"), TEXT("提示"), MB_YESNO) == IDNO) {
+                filedatabuff.push_back("error");
+            }
+            else {
+                filedatabuff.clear();
+            }
         }
     }
     std::map<std::string, std::string> buff = {};
@@ -205,8 +259,63 @@ int main(int argc, char* argv[]){
         return -1;
     }
     oldpath += name + ".bat";
+    std::map<std::string, std::string> oldmap = {};
     if (loadFileLines(oldpath, oldinfo)) {
-
+        for (int i = 0; i < oldinfo.size(); i++)
+        {
+            int idx = oldinfo[i].find("=");
+            if (idx != std::string::npos && idx > 4) {
+                if (oldinfo[i].substr(0, 2) != "::") {
+                    std::string oldkey = oldinfo[i].substr(4, idx);
+                    if (oldkey != "name" && oldkey != "version") {
+                        std::string oldvalue = oldinfo[i].substr(idx + 1, oldinfo[i].length());
+                        oldmap.insert(std::make_pair(oldkey, oldvalue));
+                    }
+                }
+            }
+        }
     }
-    system("pause");
+    for (auto i = buff.begin() ; i != buff.end(); i++)
+    {
+        std::string str = i->first;
+        std::string key = "";
+        std::transform(str.begin(), str.end(), str.begin(), ::tolower);
+        key = str;
+        if (oldmap.find(key) == oldmap.end()) {
+            neb::CJsonObject cjson = neb::CJsonObject(i->second);
+            int Type = 0;
+            std::string des = "描述:";
+            std::string curl = "";
+            std::string lua = "";
+            cjson.Get("type", Type);
+            cjson.Get("des", des);
+            cjson.Get("curl",curl);
+            cjson.Get("lua", lua);
+            cjson.Clear();
+            handItem(oldmap, key, Type, des, curl, lua);
+        }
+    }
+    std::string str = "::";
+    str += name + "\n::";
+    str += version + "\n";
+    std::string last = "";
+    for  (auto i = oldmap.begin(); i != oldmap.end(); i++)
+    {
+        std::string item = "\nset " + i->first + "=" + i->second;
+        str += item;
+        last += ";%" + i->first + "%";
+    }
+    str += "\nset __"+name+"=" + last;
+    str += "\n";
+    FILE* fp = NULL;
+    fopen_s(&fp, oldpath.c_str(), "wb");
+    if (fp != NULL) {
+        fwrite(str.c_str(), sizeof(char), str.length(), fp);
+        fclose(fp);
+        fp = NULL;
+    }
+    else {
+        return -1;
+    }
+    return 0;
 }
