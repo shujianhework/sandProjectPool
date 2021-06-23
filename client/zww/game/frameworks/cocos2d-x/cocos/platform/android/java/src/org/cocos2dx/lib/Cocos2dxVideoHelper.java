@@ -65,6 +65,7 @@ public class Cocos2dxVideoHelper {
     private final static int VideoTaskRestart = 10;
     private final static int VideoTaskKeepRatio = 11;
     private final static int VideoTaskFullScreen = 12;
+    private final static int VideoAddBtn = 13;
     final static int KeyEventBack = 1000;
     
     static class VideoHandler extends Handler{
@@ -401,7 +402,12 @@ public class Cocos2dxVideoHelper {
         
         mVideoHandler.sendMessage(msg);
     }
-    
+    public static void addSkipButton(String index) {
+        Message msg = new Message();
+        msg.what = VideoAddBtn;
+        //msg.arg1 = index;
+        mVideoHandler.sendMessage(msg);
+    }
     private void _setVideoVisible(int index, boolean visible) {
         Cocos2dxVideoView videoView = sVideoViews.get(index);
         if (videoView != null) {

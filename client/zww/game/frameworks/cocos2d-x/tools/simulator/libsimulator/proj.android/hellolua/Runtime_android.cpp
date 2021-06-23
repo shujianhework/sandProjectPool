@@ -6,7 +6,7 @@
 using namespace std;
 using namespace cocos2d;
 
-static std::string ACTIVITY_PATH("org/cocos2dx/lua/AppActivity");
+static std::string ACTIVITY_PATH("org/runtimeApp/AppActivity");
 
 void setActivityPathForAndroid(const std::string& path)
 {

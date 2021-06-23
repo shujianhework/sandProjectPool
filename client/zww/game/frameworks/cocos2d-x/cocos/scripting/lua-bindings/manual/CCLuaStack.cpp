@@ -278,7 +278,7 @@ static const std::string NOT_BYTECODE_FILE_EXT = ".lua";
 int LuaStack::executeScriptFile(const char* filename)
 {
     CCAssert(filename, "CCLuaStack::executeScriptFile() - invalid filename");
-   
+    CCLOG("file path = %s", filename);
     std::string buf(filename);
     //
     // remove .lua or .luac

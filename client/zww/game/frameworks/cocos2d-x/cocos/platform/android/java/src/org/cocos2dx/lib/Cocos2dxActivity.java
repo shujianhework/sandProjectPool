@@ -38,11 +38,12 @@ import android.preference.PreferenceManager.OnActivityResultListener;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.ViewGroup;
+//import android.view.Window;CocosPlayClient
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
-import com.chukong.cocosplay.client.CocosPlayClient;
+//import com.chukong.cocosplay.client.CocosPlayClient;
 
 import org.cocos2dx.lib.Cocos2dxHelper.Cocos2dxHelperListener;
 
@@ -258,7 +259,7 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        CocosPlayClient.init(this, false);
+        //CocosPlayClient.init(this, false);
 
         onLoadNativeLibraries();
 

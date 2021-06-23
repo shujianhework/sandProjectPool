@@ -1,19 +1,19 @@
 apply plugin: 'com.android.library'
-
+def java2lua="../java/src"
 android {
-    compileSdkVersion 22
+    compileSdkVersion 28
     buildToolsVersion "22.0.1"
 
     defaultConfig {
         minSdkVersion 10
-        targetSdkVersion 22
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
 
     sourceSets.main {
         aidl.srcDir "../java/src"
-        java.srcDir "../java/src"
+        java.srcDir java2lua
         manifest.srcFile "AndroidManifest.xml"
     }
 
@@ -26,5 +26,5 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: '../java/libs', include: ['*.jar'])
+    implementation fileTree(dir: '../java/libs', include: ['*.jar'])
 }
