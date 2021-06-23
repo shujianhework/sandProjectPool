@@ -1,4 +1,16 @@
 include ':libcocos2dx'
 project(':libcocos2dx').projectDir = new File(settingsDir, '../../cocos2d-x/cocos/platform/android/libcocos2dx')
-include ':game'
-project(':game').projectDir = new File(settingsDir, 'app')
+include ':androidBase'
+project(':androidBase').projectDir = new File(settingsDir,"../androidBase")
+//include ':publictools'
+//project(':publictools').projectDir = new File(settingsDir,"../publicTools/tools")
+include ':cocosPro'
+project(':cocosPro').projectDir = new File(settingsDir,"../cocosPro")
+
+//include ':Sdk_Vivo'
+//project(':Sdk_Vivo').projectDir = new File(settingsDir,"../pro.Sdk_Vivo")
+include ':Sdk_Quick'
+project(':Sdk_Quick').projectDir = new File(settingsDir,"../pro.Sdk_Quick")
+
+include ':app'
+project(':app').projectDir = new File(settingsDir, 'app')

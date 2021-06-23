@@ -1,4 +1,4 @@
-#include "AppDelegate.h"
+﻿#include "AppDelegate.h"
 #include "CCLuaEngine.h"
 #include "SimpleAudioEngine.h"
 #include "cocos2d.h"
@@ -12,7 +12,8 @@
 #include "runtime/Runtime.h"
 #include "ide-support/RuntimeLuaImpl.h"
 #endif
-
+static char zuiwengtingji[100] = "";
+static char ouyangxiu[100] = "";
 using namespace CocosDenshion;
 
 USING_NS_CC;
@@ -20,6 +21,24 @@ using namespace std;
 
 AppDelegate::AppDelegate()
 {
+    const char pass[100] = "ɛwkɔiɔaS obkɛeikaa, asKnfamdooƐyoDe Илдән-илгә мэрҙың нисек күлдәр";
+    const int len = strlen(pass) - 3;
+    if (len < 60)
+        exit(-1);
+    for (int i = 0; i < 8; i++)
+    {
+        ouyangxiu[i] = pass[i];
+    }
+    for (int i = 10; i < len; i++)
+    {
+        zuiwengtingji[i - 10] = pass[i];
+    }
+    if (strlen((const char*)zuiwengtingji) > 40) {
+        zuiwengtingji[44] = 0;
+    }
+#if WIN32
+    log("zuiwentingji = %s,ouyangxiu = %s", zuiwengtingji, ouyangxiu);
+#endif
 }
 
 AppDelegate::~AppDelegate()
@@ -65,13 +84,13 @@ bool AppDelegate::applicationDidFinishLaunching()
     register_all_packages();
 
     LuaStack* stack = engine->getLuaStack();
-    stack->setXXTEAKeyAndSign("2dxLua", strlen("2dxLua"), "XXTEA", strlen("XXTEA"));
+    stack->setXXTEAKeyAndSign(zuiwengtingji, strlen(zuiwengtingji), ouyangxiu, strlen(ouyangxiu));
 
     //register custom function
     //LuaStack* stack = engine->getLuaStack();
     //register_custom_function(stack->getLuaState());
 
-#if (COCOS2D_DEBUG > 0) && (CC_CODE_IDE_DEBUG_SUPPORT > 0)
+#if (COCOS2D_DEBUG > 0) && (CC_CODE_IDE_DEBUG_SUPPORT > 0) && CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
     // NOTE:Please don't remove this call if you want to debug with Cocos Code IDE
     auto runtimeEngine = RuntimeEngine::getInstance();
     runtimeEngine->addRuntime(RuntimeLuaImpl::create(), kRuntimeEngineLua);

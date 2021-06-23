@@ -1,34 +1,48 @@
 apply plugin: 'com.android.application'
-
+def luaToolPath="E:\\Project\\git\\sandProjectPool\\out\\tools\\lua"
+def appHashAesPass="olppuihi"
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+def java2lua="src/java"
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 30
+    //buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "org.cocos2dx.game"
-        minSdkVersion 10
-        targetSdkVersion 22
+        applicationId "com.ddt.mq.vivo"
+        minSdkVersion 20
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-    }
 
+        resValue "string","appHashAesPass",appHashAesPass
+    }
+    //appHashAesPass = defaultConfig.applicationId
+    def outpath = new File(getProjectDir().absolutePath+"\\"+"src/assets/pass.iclass").absolutePath;
     sourceSets.main {
-        java.srcDir "src"
-        res.srcDir "res"
-        jniLibs.srcDir "libs"
-        manifest.srcFile "AndroidManifest.xml"
-        assets.srcDir "assets"
+        java.srcDir java2lua
+        res.srcDir "src/res"
+        jniLibs.srcDir "src/libs"
+        manifest.srcFile "src/AndroidManifest.xml"
+        assets.srcDir "src/assets"
     }
-
+    String cmd = "lua.exe "+"E:\\Project\\git\\sandProjectPool\\out\\tools\\lua\\java2LuaInterface.lua "+getProjectDir().absolutePath + " " + appHashAesPass+" "+ outpath
+    task hello(){
+        println "hello start"
+        def cmdResult = cmd.execute().text.trim()
+        println cmdResult
+        println "hello end"
+    }
+    //build.finalizedBy(hello)
     signingConfigs {
-
-       release {
-            if (project.hasProperty("RELEASE_STORE_FILE")) {
-                storeFile file(RELEASE_STORE_FILE)
-                storePassword RELEASE_STORE_PASSWORD
-                keyAlias RELEASE_KEY_ALIAS
-                keyPassword RELEASE_KEY_PASSWORD
-            }
+        release {
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+            storeFile file(storePath+"\\"+storeName)
+            storePassword RELEASE_STORE_PASSWORD
+            v1SigningEnabled true
+            v2SigningEnabled true
         }
     }
 
@@ -36,14 +50,36 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            if (project.hasProperty("RELEASE_STORE_FILE")) {
+            if (project.hasProperty("storePath") && project.hasProperty("storeName") ) {
                 signingConfig signingConfigs.release
             }
         }
     }
+    applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                Calendar calendar = Calendar.getInstance(Locale.CHINA);
+                def buildDate = String.format(Locale.CHINA, "%04d%02d%02d%02d%02d%02d",
+                        calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH) + 1,
+                        calendar.get(Calendar.DAY_OF_MONTH),
+                        calendar.get(Calendar.HOUR_OF_DAY),
+                        calendar.get(Calendar.MINUTE),
+                        calendar.get(Calendar.SECOND)
+                )
+                outputFileName = "${defaultConfig.applicationId}-${variant.buildType.name}-v${defaultConfig.versionName}-${defaultConfig.versionCode}-${buildDate}.apk"
+            }
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':libcocos2dx')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':cocosPro')
+    implementation project(path: ':cocosPro')
+    implementation project(path: ':androidBase')
+    implementation project(path: ':Sdk_Quick')
+    //implementation 'com.android.support:support -v 4:24.1.1 '
+    //implementation project(path: ':Sdk_Quick')+"/libs/android-support-v4.jar"
+
+    implementation project(':libcocos2dx')
 }
