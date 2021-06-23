@@ -1,0 +1,13 @@
+installTime:1623624810
+cout:11
+com.example.androidbase.proInterface
+com.example.androidbase.sdkItemBase
+com.example.androidbase.sdkPoolManage
+com.example.androidbase.testChildSdk
+com.example.androidbase.LogicData.PayParams
+com.example.androidbase.LogicData.sdkPoolInitInsertProxy
+com.example.androidbase.LogicData.UserExtraData
+com.runtimeApp.AppActivity
+com.runtimeApp.cocosBase
+com.androidBase.appBridging
+org.cocos2dx.lua.gameActivity
