@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="lua">
+      <UniqueIdentifier>{c263642a-d0e3-4ea2-be8b-aedb88017f9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="server_auto">
+      <UniqueIdentifier>{4def90b2-1ff8-4168-9b95-bdb1245986fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manages">
+      <UniqueIdentifier>{b40e4bce-6833-4118-a737-36f4bd6c8a5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="base">
+      <UniqueIdentifier>{98694848-c35d-467c-a305-2430167aeab0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="items">
+      <UniqueIdentifier>{a74f971a-e5dc-41eb-8b73-9335e17ce30e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="luaTools">
+      <UniqueIdentifier>{36894376-17b5-45d8-b062-30e0f32d1d35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="platform">
+      <UniqueIdentifier>{a484582e-4a2f-4adb-bbc5-1745e575927e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="socketTools">
+      <UniqueIdentifier>{ae189a5d-0e60-4727-9984-a7331d682047}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test">
+      <UniqueIdentifier>{19c95c23-a51c-463a-9316-231ce31f3807}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tools">
+      <UniqueIdentifier>{83e9e28e-b620-4159-bf41-dd7ddc043fe0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="testMain.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lapi.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lauxlib.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lcode.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lctype.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\ldebug.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\ldo.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lfunc.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lgc.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\ljumptab.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\llex.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\llimits.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lmem.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lobject.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lopcodes.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lopnames.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lparser.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lprefix.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lstate.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lstring.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\ltable.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\ltm.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lua.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lua.hpp">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\luaconf.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lualib.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lundump.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lvm.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua\lzio.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="E_luaScriptClassMemberType.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="testLuaTools.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="server_auto\ser_autoLua_testLuaTools.h">
+      <Filter>server_auto</Filter>
+    </ClInclude>
+    <ClInclude Include="Manages\MemberManage.h">
+      <Filter>Manages</Filter>
+    </ClInclude>
+    <ClInclude Include="Manages\LuaScriptManage.h">
+      <Filter>Manages</Filter>
+    </ClInclude>
+    <ClInclude Include="Manages\ProtocolManagement.h">
+      <Filter>Manages</Filter>
+    </ClInclude>
+    <ClInclude Include="Manages\RecyclingCenterManage.h">
+      <Filter>Manages</Filter>
+    </ClInclude>
+    <ClInclude Include="Manages\SHelperManage.h">
+      <Filter>Manages</Filter>
+    </ClInclude>
+    <ClInclude Include="Manages\SocketManage.h">
+      <Filter>Manages</Filter>
+    </ClInclude>
+    <ClInclude Include="Manages\ThreadManagePool.h">
+      <Filter>Manages</Filter>
+    </ClInclude>
+    <ClInclude Include="Manages\zlibManage.h">
+      <Filter>Manages</Filter>
+    </ClInclude>
+    <ClInclude Include="base\InstanceBase.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\SObject.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\ThreadBase.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="items\MemberItem.h">
+      <Filter>items</Filter>
+    </ClInclude>
+    <ClInclude Include="luaTools\LuaDefineTools.h">
+      <Filter>luaTools</Filter>
+    </ClInclude>
+    <ClInclude Include="platform\PlatformBrid.h">
+      <Filter>platform</Filter>
+    </ClInclude>
+    <ClInclude Include="socketTools\SocketItem.h">
+      <Filter>socketTools</Filter>
+    </ClInclude>
+    <ClInclude Include="socketTools\SocketItemBuff.h">
+      <Filter>socketTools</Filter>
+    </ClInclude>
+    <ClInclude Include="test\testLuaTools.h">
+      <Filter>test</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\StringTools.h">
+      <Filter>tools</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="testMain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\lapi.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\lauxlib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\lbaselib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\lcode.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\lcorolib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\lctype.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\ldblib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\ldebug.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\ldo.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\ldump.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\lfunc.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\lgc.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\linit.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\liolib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\llex.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\lmathlib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\lmem.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\loadlib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\lobject.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\lopcodes.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\loslib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\lparser.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\lstate.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\lstring.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\lstrlib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\ltable.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\ltablib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\ltm.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\lundump.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\lutf8lib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\lvm.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="lua\lzio.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="server_auto\ser_auto_reg_LuaScriptManage.cpp">
+      <Filter>server_auto</Filter>
+    </ClCompile>
+    <ClCompile Include="server_auto\ser_autoLua_testLuaTools.cpp">
+      <Filter>server_auto</Filter>
+    </ClCompile>
+    <ClCompile Include="Manages\InstanceManages.cpp">
+      <Filter>Manages</Filter>
+    </ClCompile>
+    <ClCompile Include="Manages\LuaScriptManage.cpp">
+      <Filter>Manages</Filter>
+    </ClCompile>
+    <ClCompile Include="Manages\MemberManage.cpp">
+      <Filter>Manages</Filter>
+    </ClCompile>
+    <ClCompile Include="Manages\ProtocolManagement.cpp">
+      <Filter>Manages</Filter>
+    </ClCompile>
+    <ClCompile Include="Manages\RecyclingCenterManage.cpp">
+      <Filter>Manages</Filter>
+    </ClCompile>
+    <ClCompile Include="Manages\SHelperManage.cpp">
+      <Filter>Manages</Filter>
+    </ClCompile>
+    <ClCompile Include="Manages\SocketManage.cpp">
+      <Filter>Manages</Filter>
+    </ClCompile>
+    <ClCompile Include="Manages\ThreadManagePool.cpp">
+      <Filter>Manages</Filter>
+    </ClCompile>
+    <ClCompile Include="Manages\zlibManage.cpp">
+      <Filter>Manages</Filter>
+    </ClCompile>
+    <ClCompile Include="base\InstanceBase.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="base\SObject.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="base\ThreadBase.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="items\MemberItem.cpp">
+      <Filter>items</Filter>
+    </ClCompile>
+    <ClCompile Include="luaTools\LuaDefineTools.cpp">
+      <Filter>luaTools</Filter>
+    </ClCompile>
+    <ClCompile Include="platform\PlatformBrid.cpp">
+      <Filter>platform</Filter>
+    </ClCompile>
+    <ClCompile Include="socketTools\SocketItem.cpp">
+      <Filter>socketTools</Filter>
+    </ClCompile>
+    <ClCompile Include="socketTools\SocketItemBuff.cpp">
+      <Filter>socketTools</Filter>
+    </ClCompile>
+    <ClCompile Include="test\testLuaTools.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="tools\StringTools.cpp">
+      <Filter>tools</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+  </ItemGroup>
+</Project>

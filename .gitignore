@@ -35,3 +35,17 @@ client/zww/game/frameworks/runtime-src/pro.Sdk_Vivo/build
 /client/zww/game/frameworks/runtime-src/proj.win32/Debug.win32
 /client/zww/game/frameworks/cocos2d-x/external/chipmunk/prebuilt/win10/arm/*.lib
 /client/zww/game/frameworks/cocos2d-x/external/chipmunk/prebuilt/win10/win32/*.lib
+server/serverPros/TestClassDll
+server/serverPros/testCmdEnv
+server/serverPros/tsdkBasePro
+server/serverPros/tsdkWebBase
+server/serverPros/WebApplication1
+server/serverPros/CPPServerTest/crypto
+/android-ndk-r12
+/server/serverPros/CPPServerTest/thirdPartyLibrarys/libevent
+/server/serverPros/servers
+/server/serverPros/CPPServerTest/x64/Debug
+/server/serverPros/CPPServerTest/x64/Release
+/server/serverPros/gameStart/bin
+/server/serverPros/gameStart/obj
+/server/serverPros/gameStart/logs/*.log
