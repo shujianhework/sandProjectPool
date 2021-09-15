@@ -146,7 +146,7 @@ public class AppActivity extends Cocos2dxActivity{
         }
 
     }
-
+    public static  void test00234(int a,String b,boolean c,int d){}
     public String setNativeInfos(String aesClassTimeStamp,Map<String,List<List<String>>> allClassByMethon){
         String jlua = "--"+aesClassTimeStamp+"\nreturn {";
         for (String item:allClassByMethon.keySet()) {

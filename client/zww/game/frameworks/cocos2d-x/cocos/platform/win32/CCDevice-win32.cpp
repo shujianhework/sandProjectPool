@@ -99,7 +99,7 @@ public:
 
     }
 
-    bool setFont(const char * pFontName = nullptr, int nSize = 0)
+    bool setFont(const char * pFontName = nullptr, int nSize = 0,int otherBoolFlg = 0)
     {
         bool bRet = false;
         do
@@ -142,6 +142,18 @@ public:
             if (nSize)
             {
                 tNewFont.lfHeight = -nSize;
+            }
+            //otherFlg & 1 下划线  & 2 删除线 & 4 斜体 
+            if (otherBoolFlg > 0) {
+                if (otherBoolFlg & 1) {
+                    tNewFont.lfUnderline = true;
+                }
+                if (otherBoolFlg & 2) {
+                    tNewFont.lfStrikeOut = true;
+                }
+                if (otherBoolFlg & 4) {
+                    tNewFont.lfItalic = true;
+                }
             }
             GetObjectA(_font,  sizeof(tOldFont), &tOldFont);
 
@@ -431,14 +443,14 @@ static BitmapDC& sharedBitmapDC()
     return s_BmpDC;
 }
 
-Data Device::getTextureDataForText(const char * text, const FontDefinition& textDefinition, TextAlign align, int &width, int &height, bool& hasPremultipliedAlpha)
+Data Device::getTextureDataForText(const char * text, const FontDefinition& textDefinition, TextAlign align, int &width, int &height, bool& hasPremultipliedAlpha, int otherFlg)
 {
     Data ret;
     do
     {
         BitmapDC& dc = sharedBitmapDC();
 
-        if (! dc.setFont(textDefinition._fontName.c_str(), textDefinition._fontSize))
+        if (! dc.setFont(textDefinition._fontName.c_str(), textDefinition._fontSize,otherFlg))
         {
             log("Can't found font(%s), use system default", textDefinition._fontName.c_str());
         }

@@ -1052,7 +1052,7 @@ Texture2D::PixelFormat Texture2D::convertDataToFormat(const unsigned char* data,
 }
 
 // implementation Texture2D (Text)
-bool Texture2D::initWithString(const char *text, const std::string& fontName, float fontSize, const Size& dimensions/* = Size(0, 0)*/, TextHAlignment hAlignment/* =  TextHAlignment::CENTER */, TextVAlignment vAlignment/* =  TextVAlignment::TOP */)
+bool Texture2D::initWithString(const char *text, const std::string& fontName, float fontSize, const Size& dimensions/* = Size(0, 0)*/, TextHAlignment hAlignment/* =  TextHAlignment::CENTER */, TextVAlignment vAlignment/* =  TextVAlignment::TOP */, int otherFontFlg /* = 0*/)
 {
     FontDefinition tempDef;
     
@@ -1067,10 +1067,10 @@ bool Texture2D::initWithString(const char *text, const std::string& fontName, fl
     tempDef._vertAlignment = vAlignment;
     tempDef._fontFillColor = Color3B::WHITE;
 
-    return initWithString(text, tempDef);
+    return initWithString(text, tempDef,otherFontFlg);
 }
 
-bool Texture2D::initWithString(const char *text, const FontDefinition& textDefinition)
+bool Texture2D::initWithString(const char *text, const FontDefinition& textDefinition,int otherFontFlg)
 {
     if(!text || 0 == strlen(text))
     {
@@ -1125,7 +1125,7 @@ bool Texture2D::initWithString(const char *text, const FontDefinition& textDefin
     textDef._shadow._shadowEnabled = false;
     
     bool hasPremultipliedAlpha;
-    Data outData = Device::getTextureDataForText(text, textDef, align, imageWidth, imageHeight, hasPremultipliedAlpha);
+    Data outData = Device::getTextureDataForText(text, textDef, align, imageWidth, imageHeight, hasPremultipliedAlpha,otherFontFlg);
     if(outData.isNull())
     {
         return false;

@@ -176,7 +176,6 @@ public class Java2native {
                     String data = (String)method1.invoke(activity,aesClassTimeStamp,allClassByMethon);
                     if(data != null && data.length()> 0) {
                         HashTools.WriteFile(
-                                //activity.getExternalFilesDir("").getCanonicalPath() + "/native.jlua",
                                 out,
                                 data, activity);
                         classTreeState = 2;

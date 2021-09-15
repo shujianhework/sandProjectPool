@@ -94,8 +94,16 @@ public:
 
     /**
      * Gets texture data for text.
+     * otherFlg & 1 下划线  & 2 删除线 & 4 斜体 
      */
-    static Data getTextureDataForText(const char * text, const FontDefinition& textDefinition, TextAlign align, int &width, int &height, bool& hasPremultipliedAlpha);
+    static Data getTextureDataForText(
+        const char * text, 
+        const FontDefinition& textDefinition, 
+        TextAlign align, 
+        int &width, 
+        int &height, 
+        bool& hasPremultipliedAlpha,
+        int otherFlg = 0);
 
 private:
     CC_DISALLOW_IMPLICIT_CONSTRUCTORS(Device);

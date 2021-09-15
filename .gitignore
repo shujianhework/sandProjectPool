@@ -33,3 +33,5 @@ client/zww/game/frameworks/runtime-src/pro.Sdk_Vivo/build
 /client/zww/game/frameworks/cocos2d-x/external/recast/proj.win32/Debug.win32
 /client/zww/game/frameworks/cocos2d-x/tools/simulator/libsimulator/proj.win32/Debug.win32
 /client/zww/game/frameworks/runtime-src/proj.win32/Debug.win32
+/client/zww/game/frameworks/cocos2d-x/external/chipmunk/prebuilt/win10/arm/*.lib
+/client/zww/game/frameworks/cocos2d-x/external/chipmunk/prebuilt/win10/win32/*.lib

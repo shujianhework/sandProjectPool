@@ -284,7 +284,7 @@ void RuntimeEngine::start()
         startNetwork();
     }
 }
-
+#include "base/CCGameDyFuncsVersion.h"
 void RuntimeEngine::end()
 {
     if (_runtime)
@@ -299,6 +299,7 @@ void RuntimeEngine::end()
     ConsoleCommand::purge();
     FileServer::getShareInstance()->stop();
     ConfigParser::purge();
+    cocos2d::GameDyfuncsVersion::destory();
 //    FileServer::purge();
 }
 

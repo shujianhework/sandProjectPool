@@ -289,14 +289,14 @@ public:
      @param hAlignment The font horizontal text alignment type.
      @param vAlignment The font vertical text alignment type.
      */
-    bool initWithString(const char *text,  const std::string &fontName, float fontSize, const Size& dimensions = Size(0, 0), TextHAlignment hAlignment = TextHAlignment::CENTER, TextVAlignment vAlignment = TextVAlignment::TOP);
+    bool initWithString(const char *text,  const std::string &fontName, float fontSize, const Size& dimensions = Size(0, 0), TextHAlignment hAlignment = TextHAlignment::CENTER, TextVAlignment vAlignment = TextVAlignment::TOP, int otherFontFlg = 0);
 
     /** Initializes a texture from a string using a text definition.
      
      @param text A null terminated string.
      @param textDefinition A FontDefinition object contains font attributes.
      */
-    bool initWithString(const char *text, const FontDefinition& textDefinition);
+    bool initWithString(const char *text, const FontDefinition& textDefinition,int otherFontFlg = 0);
 
     /** Sets the min filter, mag filter, wrap s and wrap t texture parameters.
     If the texture size is NPOT (non power of 2), then in can only use GL_CLAMP_TO_EDGE in GL_TEXTURE_WRAP_{S,T}.

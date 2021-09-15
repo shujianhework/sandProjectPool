@@ -152,7 +152,7 @@ public:
     }
 };
 
-Label* Label::create()
+Label* Label::create(int otherFontFlg)
 {
     auto ret = new (std::nothrow) Label;
 
@@ -569,7 +569,28 @@ void Label::setFontAtlas(FontAtlas* atlas,bool distanceFieldEnabled /* = false *
         updateShaderProgram();
     }
 }
-
+void Label::setOtherFontFlg(int otherFontFlg) {
+    
+    if (otherFontFlg > (4 + 2 + 1) || otherFontFlg < 0) {
+        return;
+    }
+    if (otherFontFlg == _otherFontFlg) {
+        return;
+    }
+    _otherFontFlg = otherFontFlg;
+    updateContent();
+    
+    
+}
+bool Label::isUnderline() {
+    return _otherFontFlg & 1;
+}
+bool Label::isItalic() {
+    return _otherFontFlg & 4;
+}
+bool Label::isStrikeOut() {
+    return _otherFontFlg & 2;
+}
 bool Label::setTTFConfig(const TTFConfig& ttfConfig)
 {
     _originalFontSize = ttfConfig.fontSize;
@@ -1138,7 +1159,7 @@ void Label::createSpriteForSystemFont(const FontDefinition& fontDef)
     _currentLabelType = LabelType::STRING_TEXTURE;
 
     auto texture = new (std::nothrow) Texture2D;
-    texture->initWithString(_utf8Text.c_str(), fontDef);
+    texture->initWithString(_utf8Text.c_str(), fontDef, this->_otherFontFlg);
 
     _textSprite = Sprite::createWithTexture(texture);
     //set camera mask using label's camera mask, because _textSprite may be null when setting camera mask to label
@@ -1176,7 +1197,7 @@ void Label::createShadowSpriteForSystemFont(const FontDefinition& fontDef)
         shadowFontDefinition._stroke._strokeAlpha = shadowFontDefinition._fontAlpha;
 
         auto texture = new (std::nothrow) Texture2D;
-        texture->initWithString(_utf8Text.c_str(), shadowFontDefinition);
+        texture->initWithString(_utf8Text.c_str(), shadowFontDefinition,this->_otherFontFlg);
         _shadowNode = Sprite::createWithTexture(texture);
         texture->release();
     }

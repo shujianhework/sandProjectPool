@@ -250,7 +250,7 @@ static CGSize _calculateStringSize(NSString *str, id font, CGSize *constrainSize
 #define ALIGN_BOTTOM 2
 
 
-static bool _initWithString(const char * text, cocos2d::Device::TextAlign align, const char * fontName, int size, tImageInfo* info)
+static bool _initWithString(const char * text, cocos2d::Device::TextAlign align, const char * fontName, int size, tImageInfo* info,int otherFlg = 0)
 {
     // lazy check whether it is iOS7 device
     lazyCheckIOS7();
@@ -457,7 +457,8 @@ static bool _initWithString(const char * text, cocos2d::Device::TextAlign align,
 }
 
 
-Data Device::getTextureDataForText(const char * text, const FontDefinition& textDefinition, TextAlign align, int &width, int &height, bool& hasPremultipliedAlpha)
+Data Device::getTextureDataForText(const char * text, const FontDefinition& textDefinition, TextAlign align, int &width, int &height, 
+	bool& hasPremultipliedAlpha, int otherFlg)
 {
     Data ret;
     
@@ -481,7 +482,7 @@ Data Device::getTextureDataForText(const char * text, const FontDefinition& text
         info.tintColorB             = textDefinition._fontFillColor.b / 255.0f;
         info.tintColorA             = textDefinition._fontAlpha / 255.0f;
         
-        if (! _initWithString(text, align, textDefinition._fontName.c_str(), textDefinition._fontSize, &info))
+        if (! _initWithString(text, align, textDefinition._fontName.c_str(), textDefinition._fontSize, &info, otherFlg))
         {
             break;
         }

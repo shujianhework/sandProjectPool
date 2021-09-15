@@ -3,7 +3,8 @@
 #include "SimpleAudioEngine.h"
 #include "cocos2d.h"
 #include "lua_module_register.h"
-
+#include "register_all_packges.h"
+#include "base/CCGameDyFuncsVersion.h"
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_LINUX)
 #include "ide-support/CodeIDESupport.h"
 #endif
@@ -63,12 +64,21 @@ void AppDelegate::initGLContextAttrs()
     GLView::setGLContextAttrs(glContextAttrs);
 }
 
+static void makeCppFunsInfo2Lua() {
+
+    
+
+}
 // If you want to use packages manager to install more packages,
 // don't modify or remove this function
-static int register_all_packages()
-{
-    return 0; //flag for packages manager
-}
+//static int register_all_packages()
+//{
+//    lua_State *L = LuaEngine::getInstance()->getLuaStack()->getLuaState();
+//    /*lua_getglobal(L, "_G");
+//    */
+//    
+//    return 0; //flag for packages manager
+//}
 
 bool AppDelegate::applicationDidFinishLaunching()
 {
@@ -80,8 +90,8 @@ bool AppDelegate::applicationDidFinishLaunching()
     ScriptEngineManager::getInstance()->setScriptEngine(engine);
     lua_State* L = engine->getLuaStack()->getLuaState();
     lua_module_register(L);
-
-    register_all_packages();
+    makeCppFunsInfo2Lua();
+    register_all_packages(L);
 
     LuaStack* stack = engine->getLuaStack();
     stack->setXXTEAKeyAndSign(zuiwengtingji, strlen(zuiwengtingji), ouyangxiu, strlen(ouyangxiu));

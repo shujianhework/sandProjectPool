@@ -120,7 +120,7 @@ public:
     *
     * @return An automatically released Label object.
     */
-    static Label* create();
+    static Label* create(int otherFontFlg = 0);
 
     /**
      * Allocates and initializes a Label, base on platform-dependent API.
@@ -237,6 +237,11 @@ public:
      */
     virtual const TTFConfig& getTTFConfig() const { return _fontConfig;}
 
+    //int _otherFontFlg;//& 1 下划线  & 2 删除线 & 4 斜体 
+    void setOtherFontFlg(int otherFontFlg);
+    bool isUnderline();
+    bool isItalic();
+    bool isStrikeOut();
     /** Sets a new bitmap font to Label */
     virtual bool setBMFontFilePath(const std::string& bmfontFilePath, const Vec2& imageOffset = Vec2::ZERO, float fontSize = 0);
 
@@ -725,7 +730,7 @@ protected:
 
     EventListenerCustom* _purgeTextureListener;
     EventListenerCustom* _resetTextureListener;
-
+    int _otherFontFlg;//& 1 下划线  & 2 删除线 & 4 斜体 
 #if CC_LABEL_DEBUG_DRAW
     DrawNode* _debugDrawNode;
 #endif
