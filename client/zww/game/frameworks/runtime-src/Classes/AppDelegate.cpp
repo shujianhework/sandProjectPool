@@ -22,7 +22,7 @@ using namespace std;
 
 AppDelegate::AppDelegate()
 {
-    const char pass[100] = "ɛwkɔiɔaS obkɛeikaa, asKnfamdooƐyoDe Илдән-илгә мэрҙың нисек күлдәр";
+    const char pass[100] = "thosdfnosifjxch9xmkjhefijksdmfsddfsdfsdfbhjjxcvhnxiovjmxkldhw8efiujmhfusdifokmls";
     const int len = strlen(pass) - 3;
     if (len < 60)
         exit(-1);
