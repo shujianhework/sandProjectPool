@@ -25,11 +25,12 @@ THE SOFTWARE.
 
 #ifndef __CC_APPLICATION_PROTOCOL_H__
 #define __CC_APPLICATION_PROTOCOL_H__
-
+//#define USECPP11FINAL
 #include "platform/CCPlatformMacros.h"
 #include "base/CCScriptSupport.h"
 #include "base/CCAutoreleasePool.h"
-
+#include <string>
+typedef std::string cppString;
 NS_CC_BEGIN
 
 /**
@@ -39,8 +40,12 @@ NS_CC_BEGIN
 
 class CC_DLL ApplicationProtocol
 {
+private:
+    cppString luapass1;
+    cppString luapass2;
 public:
-
+    ApplicationProtocol():luapass1(""), luapass2(""){
+    }
     /** Since WINDOWS and ANDROID are defined as macros, we could not just use these keywords in enumeration(Platform).
      *  Therefore, 'OS_' prefix is added to avoid conflicts with the definitions of system macros.
      */
@@ -71,7 +76,6 @@ public:
         /** clean auto release pool. */
         PoolManager::destroyInstance();
     }
-
     /**
     * @brief    Implement Director and Scene init code here.
     * @return true    Initialize success, app continue.
@@ -151,6 +155,26 @@ public:
      * @lua NA
      */
     virtual bool openURL(const std::string &url) = 0;
+
+
+    /*
+    * dynamic set pass word Logic
+    */
+    //启动前必须调用这个
+#ifdef USECPP11FINAL
+    final void setPasswordStrs(const std::string& key, const std::string& sig) {
+#else
+    void setPasswordStrs(const std::string & key, const std::string & sig) {
+#endif
+        if (luapass1.length() > 0 || luapass2.length() > 0)
+            return;
+        luapass1 = key;
+        luapass2 = sig;
+    }
+    void getPasswordStrs(std::string &key,std::string &sig) {
+        key = luapass1;
+        sig = luapass2;
+    }
 };
 
 // end of platform group

@@ -2,6 +2,8 @@
 #include "extend_package_define_helper.h"
 #include "register_GameDyFuncsVersion_packges.h"
 #include "register_Label_packges.h"
+#include "register_GifBase_packges.h"
+
 int  register_all_packages(lua_State* L) {
 	tolua_open(L);
 
@@ -9,6 +11,7 @@ int  register_all_packages(lua_State* L) {
 	tolua_beginmodule(L, "CheckCpp");
 	register_GameDyFunVersion_packges(L);
 	register_Label_packges(L);
+	register_Gifbase_packges(L);
 	tolua_endmodule(L);
 	return 0;
 }

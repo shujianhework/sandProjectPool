@@ -23,7 +23,14 @@ extern "C" {
 		tolua_error(tolua_S, "invalid 'cobj' in function 'lua_CheckCpp_"#CLASS"_"#FUN"'", nullptr);\
 		return 0;\
 	}\
+
+#define DEF_CHECKCPP2LUASTAIC2OBJCLASS(CLASS,FUN,LUACLASS) static int lua_CheckCpp_##CLASS##_##FUN(lua_State* tolua_S) {\
+	lua_State* L = tolua_S;\
+	int argc = 0;\
+	CLASS *cobj = NULL;\
+	tolua_Error tolua_err;\
 	
+
 #define DEF_CHECKCPP2LUASTAIGOTOERR(CLASS,FUN,LUACLASS)\
 	tolua_lerror:\
 	tolua_error(tolua_S, "#ferror in function 'lua_CheckCpp_"#CLASS"_"#FUN"'", &tolua_err);

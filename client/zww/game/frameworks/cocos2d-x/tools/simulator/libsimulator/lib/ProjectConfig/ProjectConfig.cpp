@@ -50,6 +50,7 @@ ProjectConfig::ProjectConfig()
     , _consolePort(kProjectConfigConsolePort)
     , _fileUploadPort(kProjectConfigUploadPort)
     , _bindAddress("")
+    , _channelId("")
 {
     normalize();
 }
@@ -409,7 +410,12 @@ void ProjectConfig::parseCommandLine(const vector<string> &args)
             vector<string> pathes = split((*it), ';');
             setSearchPath(pathes);
         }
-
+#ifdef WIN32
+        else if (arg.compare("-channel") == 0) {
+            ++it;
+            _channelId = *it;
+        }
+#endif
         ++it;
     }
 }

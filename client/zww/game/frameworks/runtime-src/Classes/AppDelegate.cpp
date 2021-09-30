@@ -22,21 +22,7 @@ using namespace std;
 
 AppDelegate::AppDelegate()
 {
-    const char pass[100] = "thosdfnosifjxch9xmkjhefijksdmfsddfsdfsdfbhjjxcvhnxiovjmxkldhw8efiujmhfusdifokmls";
-    const int len = strlen(pass) - 3;
-    if (len < 60)
-        exit(-1);
-    for (int i = 0; i < 8; i++)
-    {
-        ouyangxiu[i] = pass[i];
-    }
-    for (int i = 10; i < len; i++)
-    {
-        zuiwengtingji[i - 10] = pass[i];
-    }
-    if (strlen((const char*)zuiwengtingji) > 40) {
-        zuiwengtingji[44] = 0;
-    }
+    const char pass[5] = "thos";
 #if WIN32
     log("zuiwentingji = %s,ouyangxiu = %s", zuiwengtingji, ouyangxiu);
 #endif
@@ -64,11 +50,6 @@ void AppDelegate::initGLContextAttrs()
     GLView::setGLContextAttrs(glContextAttrs);
 }
 
-static void makeCppFunsInfo2Lua() {
-
-    
-
-}
 // If you want to use packages manager to install more packages,
 // don't modify or remove this function
 //static int register_all_packages()
@@ -90,12 +71,32 @@ bool AppDelegate::applicationDidFinishLaunching()
     ScriptEngineManager::getInstance()->setScriptEngine(engine);
     lua_State* L = engine->getLuaStack()->getLuaState();
     lua_module_register(L);
-    makeCppFunsInfo2Lua();
     register_all_packages(L);
-
+    std::string k;
+    std::string p;
+    getPasswordStrs(k,p);
     LuaStack* stack = engine->getLuaStack();
-    stack->setXXTEAKeyAndSign(zuiwengtingji, strlen(zuiwengtingji), ouyangxiu, strlen(ouyangxiu));
-
+    if (k.length() > 0 && p.length() > 0) {
+        char p1[300] = "";
+        std::string p2 = "";
+        short first = p[0] % 8 + 8;
+        short last = 255 - (k[0] % 5 + 5);
+        for (int i = 0; i < p.length(); i++)
+        {
+            char c = p[i];
+            if (c > first && c < last) {
+                sprintf_s(p1, "%02d", c);
+                p2 = p2 + p1;
+                if (p2.length() > 250) {
+                    break;
+                }
+            }
+        }
+        if (p2.length() == 0) {
+            p2 = k + p;
+        }
+        stack->setXXTEAKeyAndSign(p2.c_str(), p2.length(), k.c_str(), k.length());
+    }
     //register custom function
     //LuaStack* stack = engine->getLuaStack();
     //register_custom_function(stack->getLuaState());

@@ -129,7 +129,7 @@ int lua_cocos2dx_runtime_addSearchPath(lua_State* tolua_S)
         if(!ok)
         return 0;
         
-        if (! FileUtils::getInstance()->isAbsolutePath(arg0))
+        if (true)//! FileUtils::getInstance()->isAbsolutePath(arg0)
         {
             // add write path to search path
             if (FileServer::getShareInstance()->getIsUsingWritePath())

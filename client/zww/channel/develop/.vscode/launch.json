@@ -1,0 +1,29 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(Windows) 启动",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "localRoot": "E:\\Project\\git\\sandProjectPool\\client\\zww\\channel",
+            "commandLine": "-workdir E:\\Project\\git\\sandProjectPool\\client\\zww\\channel",
+            "cwd":"E:\\Project\\git\\sandProjectPool\\client\\zww\\channel",
+            "port": 7003,
+            // 此处填写exe路径
+            "program": "E:\\Project\\git\\sandProjectPool\\client\\zww\\game\\frameworks\\runtime-src\\proj.win32\\Debug.win32\\game.exe",
+            "printType": 1,
+			"stopAtEntry": false,
+			"host": "localhost",
+			"console": "newExternalWindow",
+            "ext": [
+                ".lua",
+                ".lua.txt",
+                ".lua.bytes"
+            ],
+            "ideConnectDebugger": true
+        }
+    ]
+}

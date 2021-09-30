@@ -3,8 +3,21 @@
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
+        <Folder Name="prveLogin">
+          <Image Name="loadingBg.jpg" />
+          <Image Name="loadingFront.png" />
+          <Image Name="loadingUnder.png" />
+        </Folder>
+        <Folder Name="prveLoginLang">
+          <Folder Name="ch">
+            <Image Name="iconlogo.png" />
+          </Folder>
+          <Folder Name="currency" />
+        </Folder>
         <Image Name="HelloWorld.png" />
-        <Project Name="MainScene.csd" Type="Scene" />
+        <Project Name="UILogoScene.csd" Type="Scene" />
+        <Project Name="UIMainScene.csd" Type="Scene" />
+        <Project Name="UIupdateResourceScene.csd" Type="Scene" />
       </RootFolder>
     </Group>
   </SolutionFolder>

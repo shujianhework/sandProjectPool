@@ -111,7 +111,9 @@ public:
 
     bool validate() const;
     void dump();
-
+    const std::string getChannelId() {
+        return _channelId;
+    }
 private:
     string _projectDir;
     string _scriptFile;
@@ -133,7 +135,7 @@ private:
     int _fileUploadPort;
     string _bindAddress;
     vector<string> _searchPath;
-
+    string _channelId;
     void normalize();
     string replaceProjectDirToMacro(const string &path) const;
     string replaceProjectDirToFullPath(const string &path) const;

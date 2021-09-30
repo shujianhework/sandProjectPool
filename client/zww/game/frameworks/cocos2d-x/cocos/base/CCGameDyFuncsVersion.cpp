@@ -1,5 +1,6 @@
 
 #include "base/CCGameDyFuncsVersion.h"
+#include "platform/CCPlatformConfig.h"
 NS_CC_BEGIN
 std::map<char *,char *> GameDyfuncsVersion::funs = {};
 char* GameDyfuncsVersionInfoBufss = NULL;
@@ -64,5 +65,24 @@ void GameDyfuncsVersion::destory()
 	}
 	GameDyfuncsVersionInfoBufSize = 0;
 	GameDyfuncsVersionInfoBufOffset = 0;
+}
+int GameDyfuncsVersion::getArgvLen() {
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+	return __argc;
+#else
+	return 0;
+#endif
+	
+}
+std::string GameDyfuncsVersion::getArgvByIdx(unsigned int idx) {
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+	if (idx < __argc) {
+		char* p = __argv[idx];
+		return std::string(p);
+	}
+#endif
+	return "";	
 }
 NS_CC_END

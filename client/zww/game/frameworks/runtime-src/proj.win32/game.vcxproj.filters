@@ -10,6 +10,12 @@
     <Filter Include="resource">
       <UniqueIdentifier>{2d1d0979-58cd-4ab6-b91c-13650158f1fa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\gif">
+      <UniqueIdentifier>{853e06cb-0cb9-4807-9304-e960edf943d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\gif\gif_lib">
+      <UniqueIdentifier>{03a5560a-11fe-4cee-9447-6f7fc036b786}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h">
@@ -47,6 +53,57 @@
     <ClInclude Include="..\Classes\register_Label_packges.h">
       <Filter>Classes</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\lua_module_register.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gif\Bitmap.h">
+      <Filter>Classes\gif</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gif\CacheGif.h">
+      <Filter>Classes\gif</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gif\CacheGifData.h">
+      <Filter>Classes\gif</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gif\FileData.h">
+      <Filter>Classes\gif</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gif\GifBase.h">
+      <Filter>Classes\gif</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gif\GifMacros.h">
+      <Filter>Classes\gif</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gif\GIFMovie.h">
+      <Filter>Classes\gif</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gif\GIFMovieData.h">
+      <Filter>Classes\gif</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gif\GifUtils.h">
+      <Filter>Classes\gif</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gif\InstantGif.h">
+      <Filter>Classes\gif</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gif\InstantGifData.h">
+      <Filter>Classes\gif</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gif\Movie.h">
+      <Filter>Classes\gif</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gif\gif_lib\gif_hash.h">
+      <Filter>Classes\gif\gif_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gif\gif_lib\gif_lib.h">
+      <Filter>Classes\gif\gif_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gif\gif_lib\gif_lib_private.h">
+      <Filter>Classes\gif\gif_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\register_GifBase_packges.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -72,6 +129,57 @@
       <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\register_Label_packges.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gif\Bitmap.cpp">
+      <Filter>Classes\gif</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gif\CacheGif.cpp">
+      <Filter>Classes\gif</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gif\CacheGifData.cpp">
+      <Filter>Classes\gif</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gif\FileData.cpp">
+      <Filter>Classes\gif</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gif\GifBase.cpp">
+      <Filter>Classes\gif</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gif\GifMovie.cpp">
+      <Filter>Classes\gif</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gif\GifMovieData.cpp">
+      <Filter>Classes\gif</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gif\InstantGif.cpp">
+      <Filter>Classes\gif</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gif\InstantGifData.cpp">
+      <Filter>Classes\gif</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gif\Movie.cpp">
+      <Filter>Classes\gif</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gif\gif_lib\dgif_lib.c">
+      <Filter>Classes\gif\gif_lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gif\gif_lib\gif_err.c">
+      <Filter>Classes\gif\gif_lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gif\gif_lib\gif_font.c">
+      <Filter>Classes\gif\gif_lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gif\gif_lib\gif_hash.c">
+      <Filter>Classes\gif\gif_lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gif\gif_lib\gifalloc.c">
+      <Filter>Classes\gif\gif_lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gif\gif_lib\quantize.c">
+      <Filter>Classes\gif\gif_lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\register_GifBase_packges.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
   </ItemGroup>

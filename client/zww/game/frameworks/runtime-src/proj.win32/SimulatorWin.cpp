@@ -216,7 +216,51 @@ int SimulatorWin::getPositionY()
     GetWindowRect(_hwnd, &rect);
     return rect.top;
 }
+#include <sstream>
+#include <fstream>
 
+static std::map<std::string, std::vector<std::string>> readCsv(std::string path,std::string primaryKey) {
+    std::map<std::string, std::vector<std::string>> ret = {};
+    std::ifstream inFile("Data.csv", std::ios::in);
+    if (!inFile)
+    {
+        return ret;
+    }
+    int i = 0;
+    std::string line;
+    std::vector<std::string> head = {};
+    int j = -1;
+    while (std::getline(inFile, line))//getline(inFile, line)表示按行读取CSV文件中的数据
+    {
+        string field;
+        istringstream sin(line); //将整行字符串line读入到字符串流sin中
+        std::vector<std::string> temp = {};
+        int idx = 0;
+        while (std::getline(sin, field, ',')) {
+            temp[idx] = "";
+
+            if (j < 0 && field == primaryKey) {
+                head = temp;
+                j = idx;
+                break;
+            }
+
+            idx = idx + 1;
+        }
+        if (j >= 0) {
+            std::string key = temp[j];
+            if (key == primaryKey) {
+                key = "head";
+            }
+            if (key.size() > 0) {
+                ret.insert(std::make_pair(key, temp));
+            }
+            
+        }
+    }
+    inFile.close();
+    return ret;
+}
 int SimulatorWin::run()
 {
     INITCOMMONCONTROLSEX InitCtrls;
@@ -246,9 +290,29 @@ int SimulatorWin::run()
             _project.setDebuggerType(kCCRuntimeDebuggerCodeIDE);
         }
     }
+    auto channel = _project.getChannelId();
+    std::map<std::string, std::string> useData = {};
+    useData["channel"] = "";
+    useData["k"] = "";
+    useData["b"] = "";
 
+    if (channel != "") {
+        auto map = readCsv("pc_channel_private_Pass.csv", "channel");
+        auto iter = map.find(channel);
+        auto head = map.find("head");
+        if (iter != map.end() && head != map.end() && head->second.size() == iter->second.size() ) {
+            
+            for (size_t i = 0; i < head->second.size(); i++)
+            {
+                if (useData.find(head->second[i]) != useData.end()) {
+                    useData[head->second[i]] = iter->second[i];
+                }
+            }
+        }
+    }
     // create the application instance
     _app = new AppDelegate();
+    _app->setPasswordStrs(useData["k"], useData["b"]);
     RuntimeEngine::getInstance()->setProjectConfig(_project);
 
 #if (SIMULATOR_WITH_CONSOLE_AND_MENU > 0)
@@ -270,6 +334,9 @@ int SimulatorWin::run()
                 DeleteMenu(hmenu, SC_CLOSE, MF_BYCOMMAND);
             }
         }
+    }
+    for (int i = 0; i < __argc; i++) {
+        CCLOG("param %d = %ws", i, (char*)(__wargv[i]));
     }
 #endif
 

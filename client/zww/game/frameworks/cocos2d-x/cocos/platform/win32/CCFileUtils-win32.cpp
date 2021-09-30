@@ -242,7 +242,8 @@ static bool checkFileName(const std::string& fullPath, const std::string& filena
     size_t len = tmpPath.length();
     size_t nl = filename.length();
     std::string realName;
-
+    if (fullPath == filename)
+        return true;
     while (tmpPath.length() >= len - nl && tmpPath.length()>2)
     {
         //CCLOG("%s", tmpPath.c_str());

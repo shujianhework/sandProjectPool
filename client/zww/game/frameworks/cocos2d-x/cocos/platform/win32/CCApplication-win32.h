@@ -74,7 +74,6 @@ public:
      @brief Get target platform
      */
     virtual Platform getTargetPlatform();
-    
     /**
     @brief Get application version
     */

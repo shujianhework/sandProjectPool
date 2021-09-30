@@ -29,6 +29,8 @@ public:
 	static void addFunInfo(std::string name, std::string destr);
 	static std::string getAllFunInfos();
 	static void destory();
+	static int getArgvLen();
+	static std::string getArgvByIdx(unsigned int idx);
 };
 
 NS_CC_END
