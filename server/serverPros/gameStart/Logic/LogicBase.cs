@@ -22,7 +22,7 @@ namespace gameStart.Logic
                         value = item.Value;
                         isDefault = true;
                     }
-                    if (func(isDefault, item.Key, item.Value) == false)
+                    if (func(isDefault, item.Key, value) == false)
                         return false;
                 }
             }

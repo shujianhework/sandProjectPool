@@ -13,6 +13,8 @@
 /tools/winvs/sandBox2Tools/Debug
 /tools/winvs/sandBox2Tools/x64
 /client/zww/game/android-ndk-r12b
+/client/zww/game/android-ndk-r12b1
+/client/zww/game/android-ndk-r12
 /client/zww/game/frameworks/cocos2d-x/cocos/2d/Debug.win32
 /client/zww/game/frameworks/cocos2d-x/cocos/editor-support/spine/proj.win32/Debug.win32
 /client/zww/game/frameworks/cocos2d-x/cocos/platform/android/libcocos2dx/build
@@ -49,3 +51,7 @@ server/serverPros/CPPServerTest/crypto
 /server/serverPros/gameStart/bin
 /server/serverPros/gameStart/obj
 /server/serverPros/gameStart/logs/*.log
+/client/zww/game/frameworks/runtime-src/proj.win32
+/client/zww/game/frameworks/cocos2d-x/external/Box2D/proj.win32/Debug.win32/libbox2d.Build.CppClean.log
+/client/zww/game/frameworks/cocos2d-x/external/Box2D/proj.win32/Debug.win32/libbox2d.lib.recipe
+/client/zww/game/frameworks/cocos2d-x/external/Box2D/proj.win32/Debug.win32/libbox2d.vcxproj.FileListAbsolute.txt

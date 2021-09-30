@@ -85,7 +85,7 @@ bool AppDelegate::applicationDidFinishLaunching()
         {
             char c = p[i];
             if (c > first && c < last) {
-                sprintf_s(p1, "%02d", c);
+                sprintf(p1, "%02d", c);
                 p2 = p2 + p1;
                 if (p2.length() > 250) {
                     break;
